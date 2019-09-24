@@ -99,7 +99,9 @@ public abstract class AppMainToolBar extends JToolBar implements ApplicationMode
 	
 	@Override
 	public void updateView() {
-		selectedButton.requestFocusInWindow();
+		if (selectedButton != null) {
+			selectedButton.requestFocusInWindow();
+		}
 		this.handlerUpdateView();
 	};
 	
