@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.WindowConstants;
 
 import org.desktop.base.views.ApplicationStatus;
 import org.desktop.base.views.ApplicationViewConfiguration;
@@ -39,11 +40,11 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 
 	protected TextResources textResources = ResourcesFactory.getFactory().text();
 	
-	protected ApplicationModel model;
+	protected transient ApplicationModel model;
 	
-	private ApplicationViewConfiguration viewConfiguration;
+	private transient ApplicationViewConfiguration viewConfiguration;
 	
-	private Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<Class<?>, Consumer<ApplicationEvent>>();
+	private transient Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<>();
 	
 	private ApplicationInitializationDialog initializationDialog;
 	
@@ -60,7 +61,7 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 	/**
 	 * New Instance
 	 */
-	public AppFrame(ApplicationViewConfiguration viewConfiguration) {
+	protected AppFrame(ApplicationViewConfiguration viewConfiguration) {
 		this.viewConfiguration = viewConfiguration;
 		this.initializateGUI();
 		this.registerEventListeners();
@@ -83,7 +84,8 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 		scrollPane = new JScrollPane();
 		scrollPane.getViewport().add(this.container);
 		
-		super.setTitle(textResources.getString("application.title").get());
+		textResources.getString("application.title").ifPresent(super::setTitle);
+
 		if (this.menuBar != null) {
 			super.setJMenuBar(this.menuBar);
 		}
@@ -100,8 +102,6 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 		super.add(toolBar, BorderLayout.NORTH);
 		super.add(scrollPane, BorderLayout.CENTER);
 		super.add(status, BorderLayout.SOUTH);
-		
-		// TODO Auto-generated method stub
 		
 		super.addWindowListener(new WindowAdapter() {
 			
@@ -145,10 +145,7 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 		((ApplicationModelListener) this.container).setModel(model);
 		this.status.setModel(model);
 	}
-	
-	@Override
-	public abstract void updateView();
-	
+
 	@Override
 	public void listener(ApplicationEvent event) { 
 		if (this.handlers.containsKey(event.getClass())) {
@@ -161,8 +158,8 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 	}
 	
 	private void registerEventListeners() {
-		register(CloseApplicationEvent.class, (e) -> confirmExitAction());
-		register(ChangeViewEvent.class, (e) -> changeView(((ChangeViewEvent) e).getClassEntity()));
+		register(CloseApplicationEvent.class, e -> confirmExitAction());
+		register(ChangeViewEvent.class, e -> changeView(((ChangeViewEvent) e).getClassEntity()));
 		this.handlerRegisterEventListeners();
 	}
 	
@@ -173,7 +170,7 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			dispose();
 		} else {
-			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		}
 	}
 	
@@ -192,8 +189,7 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 				super.revalidate();
 				super.repaint();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error("Fail to change view: {}", e);
 			}
 		});
 

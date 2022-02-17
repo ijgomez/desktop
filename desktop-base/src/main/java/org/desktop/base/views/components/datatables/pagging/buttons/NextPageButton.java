@@ -22,7 +22,7 @@ public class NextPageButton extends BasicButton {
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener((e) -> nextPageAction(e));
+		super.addActionListener(this::nextPageAction);
 	}
 
 	/**

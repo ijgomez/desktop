@@ -14,9 +14,9 @@ public abstract class AppMenuItem extends JMenuItem implements ApplicationModelL
 	
 	protected TextResources textResources = ResourcesFactory.getFactory().text();
 	
-	protected ApplicationModel model;
+	protected transient ApplicationModel model;
 
-	public AppMenuItem() {
+	protected AppMenuItem() {
 		this.initializateGUI();
 	}
 
@@ -36,7 +36,5 @@ public abstract class AppMenuItem extends JMenuItem implements ApplicationModelL
 			this.model = model;
 		}
 	}
-	
-	@Override
-	public abstract void updateView();
+
 }

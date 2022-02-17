@@ -26,8 +26,8 @@ public final class ImageHelper {
 	 * @return {@link Image}
 	 */
 	public static Image loadImage(String path) {
-		assert (path != null) : "parameter 'path' cannot be null!";
-		assert (path.startsWith("/")) : "value of parameter 'path' should not be relative to the classpath";
+		if (path == null) throw new IllegalArgumentException("parameter 'path' cannot be null!");
+		if (!path.startsWith("/")) throw new IllegalArgumentException("value of parameter 'path' should not be relative to the classpath");
 
 		try {
 			log.trace("Path image: {}", path);
@@ -36,8 +36,7 @@ public final class ImageHelper {
 
 			assert (inputStream != null) : "inputStream no puede ser null";
 
-			Image image = new ImageIcon(IOUtils.toByteArray(inputStream)).getImage();
-			return image;
+			return new ImageIcon(IOUtils.toByteArray(inputStream)).getImage();
 		} catch (IOException e) {
 			log.error("Image not found: {}", path);
 			throw new IllegalArgumentException("Image not found");
@@ -51,15 +50,14 @@ public final class ImageHelper {
 	 * @return {@link ImageIcon}
 	 */
 	public static ImageIcon loadImageIcon(String path) {
-		assert (path != null) : "parameter 'path' cannot be null!";
-		assert (path.startsWith("/")) : "value of parameter 'path' should not be relative to the classpath";
+		if (path == null) throw new IllegalArgumentException("parameter 'path' cannot be null!");
+		if (!path.startsWith("/")) throw new IllegalArgumentException("value of parameter 'path' should not be relative to the classpath");
 
 		try {
 			log.trace("Path image: {}", path);
 
 			InputStream inputStream = ImageHelper.class.getResourceAsStream(path);
-			ImageIcon image = new ImageIcon(IOUtils.toByteArray(inputStream));
-			return image;
+			return new ImageIcon(IOUtils.toByteArray(inputStream));
 		} catch (IOException e) {
 			log.error("Image not found: {}", path);
 			throw new IllegalArgumentException("Image not found");
@@ -67,7 +65,11 @@ public final class ImageHelper {
 	}
 
 	public static Image loadImage(byte[] bytes) {
-		assert (bytes != null) : "parameter 'bytes' cannot be null!";
+		if (bytes != null) throw new IllegalArgumentException("parameter 'bytes' cannot be null!");
 		return new ImageIcon(bytes).getImage();
+	}
+	
+	private ImageHelper() {
+		
 	}
 }

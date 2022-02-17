@@ -16,16 +16,20 @@ public class SettingsMenuItem extends AppMenuItem implements ApplicationModelLis
 	 * Method that contains the definition of the visual elements of the component.
 	 */
 	protected void initializateGUI() {
-		this.textResources.getString("menu.button.settings.text").ifPresent((t) -> super.setText(t));
-		this.textResources.getString("menu.button.settings.tool.tip").ifPresent((t) -> super.setToolTipText(t));
+		this.textResources.getString("menu.button.settings.text").ifPresent(super::setText);
+		this.textResources.getString("menu.button.settings.tool.tip").ifPresent(super::setToolTipText);
 		
 		super.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		super.addActionListener((e) -> model.notify(new OpenSettingsDialogEvent()));
+		super.addActionListener(e -> model.notify(new OpenSettingsDialogEvent()));
 	}
 	
 	@Override
-	public void listener(ApplicationEvent event) { }
+	public void listener(ApplicationEvent event) {
+		// nothing
+	}
 
 	@Override
-	public void updateView() { }
+	public void updateView() {
+		// nothing 
+	}
 }

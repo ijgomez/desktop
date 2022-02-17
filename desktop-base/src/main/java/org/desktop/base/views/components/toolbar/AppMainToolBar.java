@@ -31,16 +31,15 @@ public abstract class AppMainToolBar extends JToolBar implements ApplicationMode
 
 	protected TextResources textResources = ResourcesFactory.getFactory().text();
 	
-	protected ApplicationModel model;
+	protected transient ApplicationModel model;
 	
-	private ApplicationViewConfiguration viewConfiguration;
+	private transient ApplicationViewConfiguration viewConfiguration;
 	
-	private Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<Class<?>, Consumer<ApplicationEvent>>();
-	
-	
+	private transient Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<>();
+
 	private JButton selectedButton;
 	
-	public AppMainToolBar(ApplicationViewConfiguration viewConfiguration) {
+	protected AppMainToolBar(ApplicationViewConfiguration viewConfiguration) {
 		this.viewConfiguration = viewConfiguration;
 		this.initializateGUI();
 		this.registerEventListeners();
@@ -51,9 +50,9 @@ public abstract class AppMainToolBar extends JToolBar implements ApplicationMode
 	 */
 	private void initializateGUI() {
 		super.setFloatable(false);
-		this.getViewConfiguration().ifPresent((vc) -> {
+		this.getViewConfiguration().ifPresent(vc -> {
 			if (vc != null && vc.getContainerViews() != null) {
-				vc.getContainerViews().forEach((c) -> {
+				vc.getContainerViews().forEach(c -> {
 					if (c.getClassElement().equals(JButton.class)) {
 						AppButton button;
 						button = new ChangeViewButton<>(c.getTitleTextKey(), c.getToolTipTextKey(), c.getClassContainer());
@@ -86,7 +85,7 @@ public abstract class AppMainToolBar extends JToolBar implements ApplicationMode
 			this.model.unregister(this);
 			this.model = model;
 		}
-		Stream.of(super.getComponents()).forEach((c) -> {
+		Stream.of(super.getComponents()).forEach(c -> {
 			if (c instanceof ApplicationModelListener) {
 				((ApplicationModelListener) c).setModel(model);
 			}
@@ -103,7 +102,7 @@ public abstract class AppMainToolBar extends JToolBar implements ApplicationMode
 			selectedButton.requestFocusInWindow();
 		}
 		this.handlerUpdateView();
-	};
+	}
 	
 	protected abstract void handlerUpdateView();
 	

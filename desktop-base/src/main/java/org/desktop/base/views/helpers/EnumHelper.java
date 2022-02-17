@@ -22,4 +22,7 @@ public final class EnumHelper {
 	            },
 	            Spliterator.ORDERED), false);
 	}
+	
+	private EnumHelper() {
+	}
 }

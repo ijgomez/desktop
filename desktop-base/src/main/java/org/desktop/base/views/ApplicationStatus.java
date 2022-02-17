@@ -12,26 +12,25 @@ public class ApplicationStatus extends AppPanel implements ApplicationModelListe
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = -1661205291887146815L;
 
-	private JLabel timeLabel;
-	
 	@Override
 	protected void initializateGUI() {
+		JLabel timeLabel;
 		
-		this.timeLabel = new JLabel();
-		this.timeLabel.setText(String.format("%1$tH:%1$tM:%1$tS del %1$te de %1$tB de %1$tY.", Calendar.getInstance()));
+		timeLabel = new JLabel();
+		timeLabel.setText(String.format("%1$tH:%1$tM:%1$tS del %1$te de %1$tB de %1$tY.", Calendar.getInstance()));
 
-		super.add(this.timeLabel);
+		super.add(timeLabel);
 	}
 	
 	@Override
 	protected void registerEventListeners() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 	
 	@Override
 	public void updateView() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 	

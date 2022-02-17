@@ -19,11 +19,11 @@ public abstract class AppMenuBar extends JMenuBar implements ApplicationModelLis
 
 	protected TextResources textResources = ResourcesFactory.getFactory().text();
 	
-	protected ApplicationModel model;
+	protected transient ApplicationModel model;
 
-	private Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<Class<?>, Consumer<ApplicationEvent>>();
+	private transient Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<>();
 
-	public AppMenuBar() {
+	protected AppMenuBar() {
 		this.initializateGUI();
 		this.registerEventListeners();
 	}
@@ -46,9 +46,6 @@ public abstract class AppMenuBar extends JMenuBar implements ApplicationModelLis
 			this.model = model;
 		}
 	}
-	
-	@Override
-	public abstract void updateView();
 
 	@Override
 	public void listener(ApplicationEvent event) { 

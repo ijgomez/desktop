@@ -16,14 +16,18 @@ public class ExportButton extends AppButton implements ApplicationModelListener 
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener((e) -> model.notify(new ExportDataEvent()));
+		super.addActionListener(e -> model.notify(new ExportDataEvent()));
 	}
 	
 	@Override
-	public void listener(ApplicationEvent event) { }
+	public void listener(ApplicationEvent event) { 
+		// nothing
+	}
 
 	@Override
-	public void updateView() { }
+	public void updateView() { 
+		// nothing
+	}
 
 	
 

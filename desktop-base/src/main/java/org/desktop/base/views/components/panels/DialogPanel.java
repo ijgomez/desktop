@@ -62,31 +62,31 @@ public class DialogPanel extends JPanel {
 	}
 
 	public void setWaitingStatusView() {	
-		this.resourcesFactory.images().getImageIcon("dialog.status.waiting.icon").ifPresent((i) -> this.iconStatusLabel.setIcon(i));	
-		this.resourcesFactory.text().getString("dialog.status.waiting.text").ifPresent((t) -> this.textStatusLabel.setText(t));
+		this.resourcesFactory.images().getImageIcon("dialog.status.waiting.icon").ifPresent(i -> this.iconStatusLabel.setIcon(i));	
+		this.resourcesFactory.text().getString("dialog.status.waiting.text").ifPresent(t -> this.textStatusLabel.setText(t));
 		
 		this.revalidate();
 		this.repaint();
 	}
 	
 	public void setInLoadingStatusView() {
-		this.resourcesFactory.images().getImageIcon("dialog.status.loading.icon").ifPresent((i) -> this.iconStatusLabel.setIcon(i));
-		this.resourcesFactory.text().getString("dialog.status.loading.text").ifPresent((t) -> this.textStatusLabel.setText(t));
+		this.resourcesFactory.images().getImageIcon("dialog.status.loading.icon").ifPresent(i -> this.iconStatusLabel.setIcon(i));
+		this.resourcesFactory.text().getString("dialog.status.loading.text").ifPresent(t -> this.textStatusLabel.setText(t));
 		
 		this.revalidate();
 		this.repaint();
 	}
 
 	public void setInProgressStatusView() {
-		this.resourcesFactory.images().getImageIcon("dialog.status.inprogress.icon").ifPresent((i) -> this.iconStatusLabel.setIcon(i));
-		this.resourcesFactory.text().getString("dialog.status.inprogress.text").ifPresent((t) -> this.textStatusLabel.setText(t));
+		this.resourcesFactory.images().getImageIcon("dialog.status.inprogress.icon").ifPresent(i -> this.iconStatusLabel.setIcon(i));
+		this.resourcesFactory.text().getString("dialog.status.inprogress.text").ifPresent(t -> this.textStatusLabel.setText(t));
 
 		this.revalidate();
 		this.repaint();
 	}
 	
 	public void setErrorView(Throwable th) {
-		this.resourcesFactory.images().getImageIcon("dialog.status.error.icon").ifPresent((i) -> this.iconStatusLabel.setIcon(i));
+		this.resourcesFactory.images().getImageIcon("dialog.status.error.icon").ifPresent(i -> this.iconStatusLabel.setIcon(i));
 		this.textStatusLabel.setText(th.getMessage());
 			
 		this.revalidate();
@@ -94,8 +94,8 @@ public class DialogPanel extends JPanel {
 	}
 	
 	public void setCompleteStatusView() {
-		this.resourcesFactory.images().getImageIcon("dialog.status.completed.icon").ifPresent((i) -> this.iconStatusLabel.setIcon(i));
-		this.resourcesFactory.text().getString("dialog.status.completed.text").ifPresent((t) -> this.textStatusLabel.setText(t));
+		this.resourcesFactory.images().getImageIcon("dialog.status.completed.icon").ifPresent(i -> this.iconStatusLabel.setIcon(i));
+		this.resourcesFactory.text().getString("dialog.status.completed.text").ifPresent(t -> this.textStatusLabel.setText(t));
 
 		this.revalidate();
 		this.repaint();

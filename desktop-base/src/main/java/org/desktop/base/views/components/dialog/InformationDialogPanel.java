@@ -9,9 +9,8 @@ public abstract class InformationDialogPanel extends JPanel {
 
 	private String message;
 	
-	public InformationDialogPanel(String message) {
+	protected InformationDialogPanel(String message) {
 		this.message = message;
-		// TODO Auto-generated constructor stub
 	}
 	
 	public abstract void handlerConfirmMessageAction();

@@ -44,8 +44,8 @@ public class DialogFactory {
 	 */
 	public static boolean showConfirmExitDialog(Component parentComponent) {
 		TextResources textResources = ResourcesFactory.getFactory().text();
-		
-		int showConfirmDialog = JOptionPane.showConfirmDialog(parentComponent, textResources.getString("dialog.confirm.exit.text").get(), textResources.getString("dialog.confirm.exit.title").get(), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+		int showConfirmDialog = JOptionPane.showConfirmDialog(parentComponent, textResources.get("dialog.confirm.exit.text"), textResources.get("dialog.confirm.exit.title"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		
 		return (showConfirmDialog == JOptionPane.YES_OPTION);
 	}
@@ -59,8 +59,7 @@ public class DialogFactory {
 	public static void showProgressDialog(JFrame frame, Runnable runnable) {
 		TextResources textResources = ResourcesFactory.getFactory().text();
 		
-		
-		showProgressDialog(frame, runnable, textResources.getString("dialog.status.inprocess.title").get(), 400, 150);
+		textResources.getString("dialog.status.inprocess.title").ifPresent(msg -> showProgressDialog(frame, runnable, msg, 400, 150));
 	}
 	
 	/**
@@ -86,8 +85,9 @@ public class DialogFactory {
 		dialog.add(progessDialogPanel);
 		dialog.setResizable(false);
 		dialog.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		dialog.setTitle(textResources.getString("application.title").get());
-//		dialog.setUndecorated(true);
+		
+		textResources.getString("application.title").ifPresent(dialog::setTitle);
+
 		dialog.setModal(true);
 		
 		thread = new Thread(runnable, "PROGRESS_THREAD"){
@@ -109,7 +109,6 @@ public class DialogFactory {
 	}
 	
 	public static void showErrorDialog(JFrame frame, Throwable th) {
-		// TODO Auto-generated catch block
 		try {
 			showWarningDialog(frame, th.getCause().getMessage());
 		} catch (Exception e) {
@@ -203,8 +202,6 @@ public class DialogFactory {
 		JFileChooser jfc;
 		
 		jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-//		jfc.setDialogTitle("Choose a directory to save your file: ");
-//		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
 		if (jfc.showOpenDialog(parent) == JFileChooser.APPROVE_OPTION) {
 			return jfc.getSelectedFile();
@@ -217,8 +214,6 @@ public class DialogFactory {
 		JFileChooser jfc;
 		
 		jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-//		jfc.setDialogTitle("Choose a directory to save your file: ");
-//		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
 		if (jfc.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
 			return jfc.getSelectedFile();
@@ -227,5 +222,7 @@ public class DialogFactory {
 		
 	}
 		
+	private DialogFactory() {
 		
+	}	
 }

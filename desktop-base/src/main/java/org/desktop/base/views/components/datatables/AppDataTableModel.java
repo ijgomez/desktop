@@ -15,14 +15,14 @@ public abstract class AppDataTableModel<E> extends AbstractTableModel implements
 
 	private String[] columnNames;
 	
-	private List<E> data;
+	private transient List<E> data;
 	
 	private int registryPageMax = MAX_REGISTRY_BY_PAGE;
 
 	/**
 	 * New Instance.
 	 */
-	public AppDataTableModel() {
+	protected AppDataTableModel() {
 		this.data = new ArrayList<>();
 	}
 	

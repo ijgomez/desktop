@@ -65,11 +65,14 @@ public class PaginationPanel extends AppPanel implements AppDataTablePaginationL
 	}
 
 	@Override
-	protected void registerEventListeners() { }
+	protected void registerEventListeners() { 
+		// nothing
+	}
 
 	@Override
 	public void updateView() {
-		int fistRegistry = 0, lastRegistry = 0;
+		int fistRegistry = 0;
+		int lastRegistry = 0;
 		
 		fistRegistry = (actualPage * MAX_REGISTRY_BY_PAGE + 1);
 		lastRegistry = (actualPage * MAX_REGISTRY_BY_PAGE + MAX_REGISTRY_BY_PAGE);

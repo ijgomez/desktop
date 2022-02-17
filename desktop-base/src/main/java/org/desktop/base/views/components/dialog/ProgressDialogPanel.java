@@ -16,7 +16,6 @@ public class ProgressDialogPanel extends JPanel {
 	
 	private String title;
 
-
 	/**
 	 * New Instance.
 	 * 

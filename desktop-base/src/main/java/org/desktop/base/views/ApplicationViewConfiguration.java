@@ -49,10 +49,10 @@ public class ApplicationViewConfiguration {
 		
 			for (String packageName : packages) {
 				
-				AnnotationsHelper.getClasses(packageName).forEach((c) -> {
+				AnnotationsHelper.getClasses(packageName).forEach(c -> {
 					
 					Annotation annotation = Stream.of(c.getAnnotations())
-							.filter((a) -> a instanceof ApplicationContainerViewConfig)
+							.filter(ApplicationContainerViewConfig.class::isInstance)
 							.findFirst().orElse(null);
 					
 					if (annotation != null) {
@@ -68,8 +68,6 @@ public class ApplicationViewConfiguration {
 			
 			//Sort by order
 			containerViewConfigurations.sort((ContainerViewConfiguration c1, ContainerViewConfiguration c2) -> c1.getOrder() - c2.getOrder());
-			
-			// TODO Auto-generated method stub
 			
 		} catch (Exception e) {
 			throw new ApplicationViewException("Failed to configure user interface:", e);

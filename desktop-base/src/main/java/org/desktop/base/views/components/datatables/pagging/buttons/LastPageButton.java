@@ -22,7 +22,7 @@ public class LastPageButton extends BasicButton {
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener((e) -> lastPageAction(e));
+		super.addActionListener(this::lastPageAction);
 	}
 
 	/**

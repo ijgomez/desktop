@@ -13,17 +13,19 @@ public class DefaultApplicationToolBar extends AppMainToolBar implements Applica
 		super(viewConfiguration);
 	}
 	
-	protected void handlerInitializateGUI() { }
+	protected void handlerInitializateGUI() {
+		// nothing
+	}
 	
 	@Override
 	protected void handlerRegisterEventListeners() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 	
 	@Override
 	protected void handlerUpdateView() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 	

@@ -1,6 +1,7 @@
 package org.desktop.base.views.factories;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
@@ -11,7 +12,9 @@ import org.desktop.base.views.helpers.EnumHelper;
 import org.desktop.base.views.resources.ImagesResources;
 import org.desktop.base.views.resources.TextResources;
 
-public class ResourcesFactory {
+public class ResourcesFactory implements Serializable {
+
+	private static final long serialVersionUID = 1412867994171031279L;
 
 	private static final String DEFAULT_TEXT_RESOURCES = "messages";
 	
@@ -42,43 +45,34 @@ public class ResourcesFactory {
 	public void load(String[] textFileNames, String[] imagesFileNames) {
 		this.loadTextResources(textFileNames);
 		this.loadImageResources(imagesFileNames);
-		// TODO Auto-generated constructor stub
 	}
 	
 	private void loadTextResources(String[] baseNames) {
 		textResources = new TextResources();
 
 		if (baseNames != null) {
-			Stream.of(baseNames).forEach((baseName) -> {
+			Stream.of(baseNames).forEach(baseName -> {
 				ResourceBundle bundle = ResourceBundle.getBundle(baseName);
-				EnumHelper.enumerationAsStream(bundle.getKeys()).forEach((key) -> {
-					textResources.register(key, bundle.getString(key));
-				});
+				EnumHelper.enumerationAsStream(bundle.getKeys()).forEach(key -> textResources.register(key, bundle.getString(key)));
 			});
 		}
 		
 		ResourceBundle defaultBundle = ResourceBundle.getBundle(DEFAULT_TEXT_RESOURCES);
-		EnumHelper.enumerationAsStream(defaultBundle.getKeys()).forEach((key) -> {
-			textResources.register(key, defaultBundle.getString(key));
-		});
+		EnumHelper.enumerationAsStream(defaultBundle.getKeys()).forEach(key -> textResources.register(key, defaultBundle.getString(key)));
 	}
 	
 	private void loadImageResources(String[] baseNames) {
 		imagesResources = new ImagesResources();
 
 		if (baseNames != null) {
-			Stream.of(baseNames).forEach((baseName) -> {
+			Stream.of(baseNames).forEach(baseName -> {
 				ResourceBundle bundle = ResourceBundle.getBundle(baseName);
-				EnumHelper.enumerationAsStream(bundle.getKeys()).forEach((key) -> {
-					imagesResources.register(key, bundle.getString(key));
-				});
+				EnumHelper.enumerationAsStream(bundle.getKeys()).forEach(key -> imagesResources.register(key, bundle.getString(key)));
 			});
 		}
 		
 		ResourceBundle defaultBundle = ResourceBundle.getBundle(DEFAULT_IMAGES_RESOURCES);
-		EnumHelper.enumerationAsStream(defaultBundle.getKeys()).forEach((key) -> {
-			imagesResources.register(key, defaultBundle.getString(key));
-		});
+		EnumHelper.enumerationAsStream(defaultBundle.getKeys()).forEach(key -> imagesResources.register(key, defaultBundle.getString(key)));
 	}
 	
 	public TextResources text() {

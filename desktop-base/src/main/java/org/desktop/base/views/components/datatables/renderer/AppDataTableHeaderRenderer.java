@@ -25,7 +25,8 @@ public class AppDataTableHeaderRenderer implements TableCellRenderer {
 	
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-		String sortColumn, sortOrder;
+		String sortColumn;
+		String sortOrder;
 		Icon sortIcon = null;
 		
 		Component component = this.defaultRenderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

@@ -42,7 +42,8 @@ public class ApplicationInitializationDialogPanel extends JPanel {
 	 */
 	private void initializateGUI() {
 		JLabel titleLabel;
-		JPanel taskPanel, buttonPanel;
+		JPanel taskPanel;
+		JPanel buttonPanel;
 		
 		titleLabel = new JLabel(Resources.APPLICATION_TITLE.getText(), SwingConstants.CENTER);
 		titleLabel.setFont(titleLabel.getFont().deriveFont((float) (titleLabel.getFont().getSize() * 2)));
@@ -54,10 +55,10 @@ public class ApplicationInitializationDialogPanel extends JPanel {
 		taskPanel.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		
 		this.dialogPanels = new ArrayList<>();
-		this.dialogPanels.add(0, new DialogPanel(textResources.getString("dialog.init.task.1.title").get()));
-		this.dialogPanels.add(1, new DialogPanel(textResources.getString("dialog.init.task.2.title").get()));
-		this.dialogPanels.add(2, new DialogPanel(textResources.getString("dialog.init.task.3.title").get()));
-		this.dialogPanels.add(3, new DialogPanel(textResources.getString("dialog.init.task.4.title").get()));
+		this.dialogPanels.add(0, new DialogPanel(textResources.get("dialog.init.task.1.title")));
+		this.dialogPanels.add(1, new DialogPanel(textResources.get("dialog.init.task.2.title")));
+		this.dialogPanels.add(2, new DialogPanel(textResources.get("dialog.init.task.3.title")));
+		this.dialogPanels.add(3, new DialogPanel(textResources.get("dialog.init.task.4.title")));
 
 		for (DialogPanel dialogPanel : dialogPanels) {
 			dialogPanel.setWaitingStatusView();
@@ -66,10 +67,10 @@ public class ApplicationInitializationDialogPanel extends JPanel {
 		}
 
 		this.cancelButton = new CancelButton();
-		this.cancelButton.addActionListener((e) -> System.exit(0));
+		this.cancelButton.addActionListener(e -> System.exit(0));
 		
 		this.exitButton = new ExitButton();
-		this.exitButton.addActionListener((e) -> System.exit(0));
+		this.exitButton.addActionListener(e -> System.exit(0));
 		this.exitButton.setVisible(false);
 		
 		buttonPanel = new JPanel();

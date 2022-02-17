@@ -45,9 +45,9 @@ public class Application {
 				setLookAndFeelApplication();
 			
 				Annotation annotation = Stream.of(className.getAnnotations())
-						.filter((a) -> a instanceof ApplicationViewScan)
+						.filter(ApplicationViewScan.class::isInstance)
 						.findAny()
-						.orElseThrow(() -> new RuntimeException("Class not valid. Class not annotated!"));//TODO Change to Exception
+						.orElseThrow(() -> new RuntimeException("Class not valid. Class not annotated!"));
 				
 				packages = ((ApplicationViewScan) annotation).packages();
 				textResources = ((ApplicationViewScan) annotation).textResources();
@@ -59,7 +59,7 @@ public class Application {
 				
 				constructor = className.getConstructor(ApplicationViewConfiguration.class, String[].class);
 				
-				frame = (AppFrame) constructor.newInstance(viewConfiguration, (Object)args);
+				frame = (AppFrame) constructor.newInstance(viewConfiguration, args);
 				frame.setVisible(true);
 				frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 				frame.toFront();
@@ -107,5 +107,9 @@ public class Application {
 		} catch (Exception ex) {
 		    log.error("Setting look and feel failed:", ex);
 		}
+	}
+	
+	private Application() {
+		
 	}
 }

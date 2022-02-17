@@ -16,17 +16,21 @@ public class SaveMenuItem extends AppMenuItem implements ApplicationModelListene
 	 * Method that contains the definition of the visual elements of the component.
 	 */
 	protected void initializateGUI() {
-		this.textResources.getString("menu.button.save.text").ifPresent((t) -> super.setText(t));
-		this.textResources.getString("menu.button.save.tool.tip").ifPresent((t) -> super.setToolTipText(t));
+		this.textResources.getString("menu.button.save.text").ifPresent(super::setText);
+		this.textResources.getString("menu.button.save.tool.tip").ifPresent(super::setToolTipText);
 
 		super.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
-		super.addActionListener((e) -> model.notify(new SaveFileEvent()));
+		super.addActionListener(e -> model.notify(new SaveFileEvent()));
 	}
 	
 	@Override
-	public void listener(ApplicationEvent event) { }
+	public void listener(ApplicationEvent event) { 
+		// nothing
+	}
 
 	@Override
-	public void updateView() { }
+	public void updateView() { 
+		// nothing
+	}
 }

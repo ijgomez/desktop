@@ -25,9 +25,6 @@ public class ContainerViewFactory {
 	
 	private ContainerViewFactory() {
 		this.views = Collections.synchronizedMap(new HashMap<>());
-		
-		//this.views.put(Mock.class, EmptyContainerPanel.class);
-		// TODO Auto-generated catch block
 	}
 	
 	public void setDefaultContainerView(Class<?> classEntity) {

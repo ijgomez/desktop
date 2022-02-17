@@ -23,19 +23,19 @@ public abstract class BasicButton extends JButton {
 	
 	private String toolTipTextKey;
 
-	public BasicButton(String iconKey, String titleTextKey, String toolTipTextKey) {
+	protected BasicButton(String iconKey, String titleTextKey, String toolTipTextKey) {
 		this(titleTextKey, toolTipTextKey);
 		this.iconKey = iconKey;
 		this.initializateGUI();
 	}
 	
-	public BasicButton(String titleTextKey, String toolTipTextKey) {
+	protected BasicButton(String titleTextKey, String toolTipTextKey) {
 		this.titleTextKey = titleTextKey;
 		this.toolTipTextKey = toolTipTextKey;
 		this.initializateGUI();
 	}
 	
-	public BasicButton(String iconKey) {
+	protected BasicButton(String iconKey) {
 		this.iconKey = iconKey;
 		this.initializateGUI();
 	}
@@ -44,9 +44,9 @@ public abstract class BasicButton extends JButton {
 	 * Method that contains the definition of the visual elements of the component.
 	 */
 	private void initializateGUI() {
-		this.imagesResources.getImageIcon(iconKey).ifPresent((i) -> super.setIcon(i));
-		this.textResources.getString(titleTextKey).ifPresent((t) -> super.setText(t));
-		this.textResources.getString(toolTipTextKey).ifPresent((t) -> super.setToolTipText(t));
+		this.imagesResources.getImageIcon(iconKey).ifPresent(super::setIcon);
+		this.textResources.getString(titleTextKey).ifPresent(super::setText);
+		this.textResources.getString(toolTipTextKey).ifPresent(super::setToolTipText);
 
 		super.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		

@@ -31,7 +31,9 @@ public class DefaultApplicationFrame extends AppFrame implements ApplicationMode
 		this.arguments = args;
 	}
 
-	protected void handlerInitializateGUI() { }
+	protected void handlerInitializateGUI() { 
+		// nothing
+	}
 	
 	protected AppMenuBar buildMenuBar() {
 		return new ApplicationMenuBar();
@@ -52,23 +54,27 @@ public class DefaultApplicationFrame extends AppFrame implements ApplicationMode
 			private static final long serialVersionUID = 3358680407057807752L;
 
 			@Override
-			protected void handlerExecuteInitializationApplication() { }
+			protected void handlerExecuteInitializationApplication() { 
+				// nothing
+			}
 
 			@Override
-			protected void handlerExecuteShutdownApplication() { }
+			protected void handlerExecuteShutdownApplication() { 
+				// nothing
+			}
 			
 		};
 	}
 
 	@Override
 	protected void handlerRegisterEventListeners() {
-		super.register(OpenFileEvent.class, (e) -> openFileDialog());
-		super.register(SaveFileEvent.class, (e) -> saveFileDialog());
+		super.register(OpenFileEvent.class, e -> openFileDialog());
+		super.register(SaveFileEvent.class, e -> saveFileDialog());
 	}
 	
 	@Override
 	public void updateView() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 
@@ -79,7 +85,6 @@ public class DefaultApplicationFrame extends AppFrame implements ApplicationMode
 		if (f != null) {
 			log.trace("File: {}", f.getAbsolutePath());
 		}
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -90,8 +95,7 @@ public class DefaultApplicationFrame extends AppFrame implements ApplicationMode
 		if (f != null) {
 			log.trace("File: {}", f.getAbsolutePath());
 		}
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

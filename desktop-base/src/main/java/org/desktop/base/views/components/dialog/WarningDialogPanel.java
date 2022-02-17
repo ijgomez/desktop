@@ -9,9 +9,8 @@ public abstract class WarningDialogPanel extends JPanel {
 
 	private String message;
 	
-	public WarningDialogPanel(String message) {
+	protected WarningDialogPanel(String message) {
 		this.message = message;
-		// TODO Auto-generated constructor stub
 	}
 	
 	public abstract void handlerConfirmMessageAction();

@@ -1,6 +1,7 @@
 package org.desktop.base.views.resources;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -12,8 +13,10 @@ import org.desktop.base.views.helpers.ImageHelper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ImagesResources {
+public class ImagesResources implements Serializable {
 
+	private static final long serialVersionUID = -8729764599491338789L;
+	
 	private Map<String, String> resources;
 	
 	public ImagesResources() {
@@ -21,9 +24,7 @@ public class ImagesResources {
 	}
 	
 	public void register(String key, String value) {
-		if (!this.resources.containsKey(key)) {
-			this.resources.put(key, value);
-		}
+		this.resources.putIfAbsent(key, value);
 	}
 	
 	public Optional<ImageIcon> getImageIcon(String key) {

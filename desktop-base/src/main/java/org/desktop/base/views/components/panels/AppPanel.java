@@ -19,11 +19,11 @@ public abstract class AppPanel extends JPanel implements ApplicationModelListene
 
 	protected TextResources textResources = ResourcesFactory.getFactory().text();
 	
-	protected ApplicationModel model;
+	protected transient ApplicationModel model;
 	
-	private Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<Class<?>, Consumer<ApplicationEvent>>();
+	private transient Map<Class<?>, Consumer<ApplicationEvent>> handlers = new HashMap<>();
 	
-	public AppPanel() {
+	protected AppPanel() {
 		this.initializateGUI();
 		this.registerEventListeners();
 	}
@@ -46,10 +46,7 @@ public abstract class AppPanel extends JPanel implements ApplicationModelListene
 			this.model = model;
 		}
 	}
-	
-	@Override
-	public abstract void updateView();
-	
+
 	@Override
 	public void listener(ApplicationEvent event) { 
 		if (this.handlers.containsKey(event.getClass())) {

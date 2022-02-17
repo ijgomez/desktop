@@ -28,13 +28,13 @@ public abstract class ApplicationInitializationDialog extends JDialog {
 	
 	private String[] arguments;
 	
-	private ApplicationModel model;
+	private transient ApplicationModel model;
 	
 	private ApplicationInitializationDialogPanel initializationDialogPanel;
 	
 	private int currentTask;
 
-	public ApplicationInitializationDialog(JFrame owner, String... args) {
+	protected ApplicationInitializationDialog(JFrame owner, String... args) {
 		super(owner);
 		this.arguments = args;
 		this.initializeGUI();
@@ -45,7 +45,6 @@ public abstract class ApplicationInitializationDialog extends JDialog {
 
 		super.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		super.setSize(400, 530);
-		//super.setLocationRelativeTo(super.getParent());
 		super.setLocationRelativeTo(null);
 		super.setResizable(false);
 		super.setUndecorated(true);
@@ -59,7 +58,7 @@ public abstract class ApplicationInitializationDialog extends JDialog {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				log.debug("Start initialization application process...");
-				Thread thread = new Thread(() -> executeInitializationApplication(), "initThread");
+				Thread thread = new Thread(ApplicationInitializationDialog.this::executeInitializationApplication, "initThread");
 				thread.setUncaughtExceptionHandler((Thread t, Throwable th) -> {
 					log.error("Fallo al inicializar la consola: ", th);
 					initializationDialogPanel.setStatusErrorTask(currentTask, th);
@@ -117,7 +116,7 @@ public abstract class ApplicationInitializationDialog extends JDialog {
 		// Configuration Shutdown Hook.
 		this.currentTask = 3;
 		this.initializationDialogPanel.setStatusInProcessTask(this.currentTask);
-		Runtime.getRuntime().addShutdownHook(new Thread(() -> executeShutdownApplication()));
+		Runtime.getRuntime().addShutdownHook(new Thread(this::executeShutdownApplication));
 		this.initializationDialogPanel.setStatusCompleteTask(this.currentTask);
 		SleepHelper.sleep(1000);
 		

@@ -28,7 +28,9 @@ public class ApplicationMenuBar extends AppMenuBar implements ApplicationModelLi
 	
 	@Override
 	protected void initializateGUI() {
-		JMenu fileMenu, editMenu, settingsMenu;
+		JMenu fileMenu;
+		JMenu editMenu;
+		JMenu settingsMenu;
 
         openFileMenuItem = new OpenMenuItem();
         
@@ -63,7 +65,7 @@ public class ApplicationMenuBar extends AppMenuBar implements ApplicationModelLi
 	
 	@Override
 	protected void registerEventListeners() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 	
@@ -78,7 +80,7 @@ public class ApplicationMenuBar extends AppMenuBar implements ApplicationModelLi
 	
 	@Override
 	public void updateView() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 	

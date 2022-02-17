@@ -11,18 +11,18 @@ public class EmptyContainerPanel extends AppContainerView implements Application
 
 	@Override
 	protected void initializateGUI() {
-		super.add(new JLabel(textResources.getString("container.empty.text").get()));
+		super.add(new JLabel(textResources.get("container.empty.text")));
 	}
 	
 	@Override
 	protected void registerEventListeners() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 	
 	@Override
 	public void updateView() {
-		// TODO Auto-generated method stub
+		// nothing
 		
 	}
 

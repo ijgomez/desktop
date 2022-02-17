@@ -36,7 +36,6 @@ public abstract class AppDataTable<E, C> extends AppPanel implements Application
 	@Override
 	protected void initializateGUI() {
 		JScrollPane scrollPane;
-//		TableRowSorter<AppDataTableModel<E>> tableRowSorter;
 		
 		this.filterView = createFilterView();
 		
@@ -55,16 +54,11 @@ public abstract class AppDataTable<E, C> extends AppPanel implements Application
 		};
 		this.tableModel.setColumnNames(createColumnNames());
 		
-//		tableRowSorter = new TableRowSorter<>(this.tableModel);
-//		tableRowSorter.addRowSorterListener((e) -> sorterChanged(e));
-		
 		this.table = new JTable();
 		this.table.setModel(this.tableModel);
-//      this.table.setAutoCreateRowSorter(true);
-//		this.table.setRowSorter(tableRowSorter);
         this.table.setFillsViewportHeight(true);
         this.table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        this.table.getSelectionModel().addListSelectionListener((e) -> valueSelected(e));
+        this.table.getSelectionModel().addListSelectionListener(this::valueSelected);
         this.table.getTableHeader().setDefaultRenderer(new AppDataTableHeaderRenderer(this.table.getTableHeader().getDefaultRenderer()));
         this.table.getTableHeader().addMouseListener(new AppDataTableHeaderMouseListener(this.table));
         
@@ -81,12 +75,6 @@ public abstract class AppDataTable<E, C> extends AppPanel implements Application
 		
 		this.handlerInitializateGUI();
 	}
-	
-//	private void sorterChanged(RowSorterEvent e) {
-//		log.trace("event: {}", e);
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 	private void valueSelected(ListSelectionEvent event) {
 		if (event.getValueIsAdjusting()) {
@@ -111,7 +99,7 @@ public abstract class AppDataTable<E, C> extends AppPanel implements Application
 
 	@Override
 	protected void registerEventListeners() {
-		super.addEventListener(ReloadDataEvent.class, (e) -> updateView());
+		super.addEventListener(ReloadDataEvent.class, e -> updateView());
 	}
 	
 	@Override
@@ -141,7 +129,7 @@ public abstract class AppDataTable<E, C> extends AppPanel implements Application
 		int rowCount = this.tableModel.getRowCount();
 		
 		log.trace("Remove {} rows...", rowCount);
-		while (tableModel.getData().size() > 0) {
+		while (!tableModel.getData().isEmpty()) {
 			tableModel.getData().remove(0);
 		}
 		tableModel.fireTableDataChanged();

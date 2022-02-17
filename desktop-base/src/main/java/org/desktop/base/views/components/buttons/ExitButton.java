@@ -10,6 +10,8 @@ public class ExitButton extends BasicButton {
 	}
 	
 	@Override
-	protected void handlerInitializateGUI() { }
+	protected void handlerInitializateGUI() { 
+		// nothing
+	}
 	
 }

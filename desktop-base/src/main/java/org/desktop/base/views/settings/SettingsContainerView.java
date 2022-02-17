@@ -13,20 +13,19 @@ public abstract class SettingsContainerView extends JPanel {
 	/**
 	 * New Instance.
 	 */
-	public SettingsContainerView() {
+	protected SettingsContainerView() {
 		this.initializateGUI();
 	}
 
 	private void initializateGUI() {
 		JPanel buttonPanel;
-		JButton saveButton, cancelButton;
-		
-		// TODO Auto-generated method stub
+		JButton saveButton;
+		JButton cancelButton;
 		
 		saveButton = new JButton("Save");
 		
 		cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener((e) -> closeDialogAction(e));
+		cancelButton.addActionListener(this::closeDialogAction);
 		
 		buttonPanel = new JPanel();
 		buttonPanel.add(saveButton);

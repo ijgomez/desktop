@@ -22,7 +22,7 @@ public class FirstPageButton extends BasicButton {
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener((e) -> firstPageAction(e));
+		super.addActionListener(this::firstPageAction);
 	}
 
 	/**

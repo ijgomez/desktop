@@ -19,14 +19,18 @@ public class DeleteButton<E> extends AppButton implements ApplicationModelListen
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener((e) -> model.notify(new DeleteEntityEvent(classView)));
+		super.addActionListener(e -> model.notify(new DeleteEntityEvent(classView)));
 	}
 	
 	@Override
-	public void listener(ApplicationEvent event) { }
+	public void listener(ApplicationEvent event) { 
+		// nothing
+	}
 
 	@Override
-	public void updateView() { }
+	public void updateView() { 
+		// nothing
+	}
 
 	
 
