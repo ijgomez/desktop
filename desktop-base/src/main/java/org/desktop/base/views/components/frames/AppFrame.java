@@ -38,7 +38,7 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 5279263641839891108L;
 
-	protected TextResources textResources = ResourcesFactory.getFactory().text();
+	protected TextResources textResources = ResourcesFactory.getInstance().text();
 	
 	protected transient ApplicationModel model;
 	
@@ -167,7 +167,7 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 
 	private void confirmExitAction() {
 		if (DialogFactory.showConfirmExitDialog(this)) {
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			dispose();
 		} else {
 			setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

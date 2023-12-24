@@ -12,4 +12,8 @@ public class SleepHelper {
 		}
 	}
 	
+	private SleepHelper() {
+
+	}
+	
 }

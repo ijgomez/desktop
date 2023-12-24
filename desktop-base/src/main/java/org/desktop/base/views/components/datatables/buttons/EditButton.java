@@ -19,7 +19,7 @@ public class EditButton<E> extends AppButton implements ApplicationModelListener
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener(e -> model.notify(new OpenEntityEvent(classView, "EDIT")));
+		super.addActionListener(e -> applicationModel.notify(new OpenEntityEvent(classView, "EDIT")));
 	}
 	
 	@Override

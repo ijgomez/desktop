@@ -32,8 +32,8 @@ public class FirstPageButton extends BasicButton {
 	 */
 	private void firstPageAction(ActionEvent e) {
 		log.trace("Fist page: {}", e);
-		if (super.getParent() instanceof AppDataTablePaginationListener) {
-			((AppDataTablePaginationListener) super.getParent()).firstPageAction(e);
+		if (super.getParent() instanceof AppDataTablePaginationListener appDataTablePaginationListener) {
+			appDataTablePaginationListener.firstPageAction(e);
 		}
 	}
 

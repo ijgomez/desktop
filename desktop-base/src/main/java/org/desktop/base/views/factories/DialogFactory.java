@@ -43,7 +43,7 @@ public class DialogFactory {
 	 * @return Result of the confirmation dialogue.
 	 */
 	public static boolean showConfirmExitDialog(Component parentComponent) {
-		TextResources textResources = ResourcesFactory.getFactory().text();
+		TextResources textResources = ResourcesFactory.getInstance().text();
 
 		int showConfirmDialog = JOptionPane.showConfirmDialog(parentComponent, textResources.get("dialog.confirm.exit.text"), textResources.get("dialog.confirm.exit.title"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		
@@ -57,7 +57,7 @@ public class DialogFactory {
 	 * @param runnable Operation.
 	 */
 	public static void showProgressDialog(JFrame frame, Runnable runnable) {
-		TextResources textResources = ResourcesFactory.getFactory().text();
+		TextResources textResources = ResourcesFactory.getInstance().text();
 		
 		textResources.getString("dialog.status.inprocess.title").ifPresent(msg -> showProgressDialog(frame, runnable, msg, 400, 150));
 	}
@@ -73,7 +73,7 @@ public class DialogFactory {
 	public static void showProgressDialog(JFrame frame, Runnable runnable, String title, Integer width, Integer height) {
 		final JDialog dialog;
 		final JPanel progessDialogPanel;
-		TextResources textResources = ResourcesFactory.getFactory().text();
+		TextResources textResources = ResourcesFactory.getInstance().text();
 		Thread thread;
 		
 		progessDialogPanel = new ProgressDialogPanel(title);

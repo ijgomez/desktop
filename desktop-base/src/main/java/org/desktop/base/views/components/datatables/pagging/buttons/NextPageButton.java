@@ -32,8 +32,8 @@ public class NextPageButton extends BasicButton {
 	 */
 	private void nextPageAction(ActionEvent e) {
 		log.trace("Next page: {}", e);
-		if (super.getParent() instanceof AppDataTablePaginationListener) {
-			((AppDataTablePaginationListener) super.getParent()).nextPageAction(e);
+		if (super.getParent() instanceof AppDataTablePaginationListener appDataTablePaginationListener) {
+			appDataTablePaginationListener.nextPageAction(e);
 		}
 	}
 }

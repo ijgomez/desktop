@@ -15,7 +15,7 @@ public class SelectButton extends AppButton implements ApplicationModelListener 
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener(e -> model.notify(new SelectFileEvent()));
+		super.addActionListener(e -> applicationModel.notify(new SelectFileEvent()));
 	}
 	
 	@Override

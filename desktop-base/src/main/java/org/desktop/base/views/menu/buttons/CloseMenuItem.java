@@ -21,7 +21,7 @@ public class CloseMenuItem extends AppMenuItem implements ApplicationModelListen
 		
 		super.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
-		super.addActionListener(e -> model.notify(new CloseApplicationEvent()));
+		super.addActionListener(e -> applicationModel.notify(new CloseApplicationEvent()));
 	}
 	
 	@Override

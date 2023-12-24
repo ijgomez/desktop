@@ -17,7 +17,7 @@ public abstract class AppPanel extends JPanel implements ApplicationModelListene
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 1856853307207687798L;
 
-	protected TextResources textResources = ResourcesFactory.getFactory().text();
+	protected TextResources textResources = ResourcesFactory.getInstance().text();
 	
 	protected transient ApplicationModel model;
 	

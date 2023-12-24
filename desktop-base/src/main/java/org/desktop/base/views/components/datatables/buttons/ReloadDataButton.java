@@ -16,7 +16,7 @@ public class ReloadDataButton extends AppButton implements ApplicationModelListe
 	
 	@Override
 	protected void handlerInitializateGUI() {
-		super.addActionListener(e -> model.notify(new ReloadDataEvent()));
+		super.addActionListener(e -> applicationModel.notify(new ReloadDataEvent()));
 	}
 	
 	@Override

@@ -32,8 +32,8 @@ public class PreviousPageButton extends BasicButton {
 	 */
 	private void previousPageAction(ActionEvent e) {
 		log.trace("Previous page: {}", e);
-		if (super.getParent() instanceof AppDataTablePaginationListener) {
-			((AppDataTablePaginationListener) super.getParent()).previousPageAction(e);
+		if (super.getParent() instanceof AppDataTablePaginationListener appDataTablePaginationListener) {
+			appDataTablePaginationListener.previousPageAction(e);
 		}
 	}
 

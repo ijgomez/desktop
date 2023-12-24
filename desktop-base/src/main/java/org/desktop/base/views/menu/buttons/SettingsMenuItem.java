@@ -20,7 +20,7 @@ public class SettingsMenuItem extends AppMenuItem implements ApplicationModelLis
 		this.textResources.getString("menu.button.settings.tool.tip").ifPresent(super::setToolTipText);
 		
 		super.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		super.addActionListener(e -> model.notify(new OpenSettingsDialogEvent()));
+		super.addActionListener(e -> applicationModel.notify(new OpenSettingsDialogEvent()));
 	}
 	
 	@Override

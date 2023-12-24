@@ -12,9 +12,9 @@ public abstract class AppMenuItem extends JMenuItem implements ApplicationModelL
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 7730448020444982488L;
 	
-	protected TextResources textResources = ResourcesFactory.getFactory().text();
+	protected TextResources textResources = ResourcesFactory.getInstance().text();
 	
-	protected transient ApplicationModel model;
+	protected transient ApplicationModel applicationModel;
 
 	protected AppMenuItem() {
 		this.initializateGUI();
@@ -28,12 +28,12 @@ public abstract class AppMenuItem extends JMenuItem implements ApplicationModelL
 	@Override
 	public void setModel(ApplicationModel model) {
 		if (model != null) {
-			this.model = model;
-			this.model.register(this);
+			this.applicationModel = model;
+			this.applicationModel.register(this);
 			this.updateView();
 		} else {
-			this.model.unregister(this);
-			this.model = model;
+			this.applicationModel.unregister(this);
+			this.applicationModel = model;
 		}
 	}
 

@@ -21,7 +21,7 @@ public class OpenMenuItem extends AppMenuItem implements ApplicationModelListene
 		
 		super.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
-		super.addActionListener(e -> model.notify(new OpenFileEvent()));
+		super.addActionListener(e -> applicationModel.notify(new OpenFileEvent()));
 	}
 	
 	@Override

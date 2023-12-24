@@ -12,7 +12,7 @@ import org.desktop.base.views.helpers.EnumHelper;
 import org.desktop.base.views.resources.ImagesResources;
 import org.desktop.base.views.resources.TextResources;
 
-public class ResourcesFactory implements Serializable {
+public final class ResourcesFactory implements Serializable {
 
 	private static final long serialVersionUID = 1412867994171031279L;
 
@@ -20,27 +20,34 @@ public class ResourcesFactory implements Serializable {
 	
 	private static final String DEFAULT_IMAGES_RESOURCES = "images";
 
-	private static final ResourcesFactory FACTORY = new ResourcesFactory();
+	private static final ResourcesFactory INSTANCE = new ResourcesFactory();
 	
-	public static ResourcesFactory getFactory() {
-		return FACTORY;
+	public static ResourcesFactory getInstance() {
+		return INSTANCE;
 	}
 	
 	public static Optional<ImageIcon> getImageIcon(String key) {
-		return getFactory().images().getImageIcon(key);
+		return getInstance().images().getImageIcon(key);
 	}
 	
 	public static Optional<Image> getImage(String key) {
-		return getFactory().images().getImage(key);
+		return getInstance().images().getImage(key);
 	}
 	
 	public static String getString(String key, Object... parameters) {
-		return getFactory().text().getString(key, parameters);
+		return getInstance().text().getString(key, parameters);
 	}
 	
 	private TextResources textResources;
 	
 	private ImagesResources imagesResources;
+	
+	/**
+	 * New Instance.
+	 */
+	private ResourcesFactory() {
+		
+	}
 	
 	public void load(String[] textFileNames, String[] imagesFileNames) {
 		this.loadTextResources(textFileNames);

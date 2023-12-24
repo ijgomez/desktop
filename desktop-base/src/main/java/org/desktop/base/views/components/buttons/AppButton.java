@@ -8,7 +8,7 @@ public abstract class AppButton extends BasicButton implements ApplicationModelL
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 4106812624638240974L;
 	
-	protected transient ApplicationModel model;
+	protected transient ApplicationModel applicationModel;
 
 	protected AppButton(String titleTextKey, String toolTipTextKey) {
 		super(titleTextKey, toolTipTextKey);
@@ -17,12 +17,12 @@ public abstract class AppButton extends BasicButton implements ApplicationModelL
 	@Override
 	public void setModel(ApplicationModel model) {
 		if (model != null) {
-			this.model = model;
-			this.model.register(this);
+			this.applicationModel = model;
+			this.applicationModel.register(this);
 			this.updateView();
 		} else {
-			this.model.unregister(this);
-			this.model = model;
+			this.applicationModel.unregister(this);
+			this.applicationModel = model;
 		}
 	}
 

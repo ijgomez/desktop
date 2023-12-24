@@ -29,7 +29,7 @@ public abstract class AppMainToolBar extends JToolBar implements ApplicationMode
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 1460066304433101806L;
 
-	protected TextResources textResources = ResourcesFactory.getFactory().text();
+	protected TextResources textResources = ResourcesFactory.getInstance().text();
 	
 	protected transient ApplicationModel model;
 	
@@ -86,8 +86,8 @@ public abstract class AppMainToolBar extends JToolBar implements ApplicationMode
 			this.model = model;
 		}
 		Stream.of(super.getComponents()).forEach(c -> {
-			if (c instanceof ApplicationModelListener) {
-				((ApplicationModelListener) c).setModel(model);
+			if (c instanceof ApplicationModelListener applicationModelListener) {
+				applicationModelListener.setModel(model);
 			}
 		});
 	}

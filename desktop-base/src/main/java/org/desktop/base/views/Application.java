@@ -55,7 +55,7 @@ public class Application {
 				viewConfiguration = new ApplicationViewConfiguration();
 				viewConfiguration.load(packages);
 				
-				ResourcesFactory.getFactory().load(textResources, null);
+				ResourcesFactory.getInstance().load(textResources, null);
 				
 				constructor = className.getConstructor(ApplicationViewConfiguration.class, String[].class);
 				

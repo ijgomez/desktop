@@ -24,7 +24,7 @@ public class ApplicationInitializationDialogPanel extends JPanel {
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = -7761631327237930071L;
 	
-	private TextResources textResources = ResourcesFactory.getFactory().text();
+	private TextResources textResources = ResourcesFactory.getInstance().text();
 	
 	private List<DialogPanel> dialogPanels;
 	

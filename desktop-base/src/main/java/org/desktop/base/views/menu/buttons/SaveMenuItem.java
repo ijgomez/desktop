@@ -21,7 +21,7 @@ public class SaveMenuItem extends AppMenuItem implements ApplicationModelListene
 
 		super.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
-		super.addActionListener(e -> model.notify(new SaveFileEvent()));
+		super.addActionListener(e -> applicationModel.notify(new SaveFileEvent()));
 	}
 	
 	@Override

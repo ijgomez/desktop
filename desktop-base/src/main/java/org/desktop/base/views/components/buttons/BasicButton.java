@@ -13,9 +13,9 @@ public abstract class BasicButton extends JButton {
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 4106812624638240974L;
 	
-	private TextResources textResources = ResourcesFactory.getFactory().text();
+	private TextResources textResources = ResourcesFactory.getInstance().text();
 	
-	private ImagesResources imagesResources = ResourcesFactory.getFactory().images();
+	private ImagesResources imagesResources = ResourcesFactory.getInstance().images();
 	
 	private String iconKey;
 	

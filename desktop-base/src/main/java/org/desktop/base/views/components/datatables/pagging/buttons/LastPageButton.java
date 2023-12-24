@@ -32,8 +32,8 @@ public class LastPageButton extends BasicButton {
 	 */
 	private void lastPageAction(ActionEvent e) {
 		log.trace("Last page: {}", e);
-		if (super.getParent() instanceof AppDataTablePaginationListener) {
-			((AppDataTablePaginationListener) super.getParent()).lastPageAction(e);
+		if (super.getParent() instanceof AppDataTablePaginationListener appDataTablePaginationListener) {
+			appDataTablePaginationListener.lastPageAction(e);
 		}
 	}
 }
