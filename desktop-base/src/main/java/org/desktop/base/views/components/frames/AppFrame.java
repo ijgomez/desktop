@@ -180,7 +180,7 @@ public abstract class AppFrame extends JFrame implements ApplicationModelListene
 			try {
 				((ApplicationModelListener) this.container).setModel(null);
 				super.remove(this.scrollPane);
-				this.container = (JComponent) classEntity.newInstance();
+				this.container = (JComponent) classEntity.getDeclaredConstructor().newInstance();
 				((ApplicationModelListener) this.container).setModel(this.model);
 				
 				scrollPane.setViewportView(this.container);

@@ -1,5 +1,6 @@
 package org.desktop.base.views.factories;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,9 +36,9 @@ public class ContainerViewFactory {
 		try {
 			
 			log.trace("Creating container view for the entity {}...", classEntity);
-			return (ApplicationModelListener) this.views.getOrDefault(classEntity, this.defaultContainerView).newInstance();
+			return (ApplicationModelListener) this.views.getOrDefault(classEntity, this.defaultContainerView).getDeclaredConstructor().newInstance();
 			
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			throw new ApplicationViewException("Failed to create container view.", e);
 		}
 		
