@@ -44,7 +44,7 @@ public class SportmanDataTableListView  extends AppPanel implements ApplicationM
 	
 	@Override
 	protected void registerEventListeners() {
-		super.addEventListener(OpenEntityEvent.class, (e) -> openEntityDialog(e));
+		super.addEventListener(OpenEntityEvent.class, this::openEntityDialog);
 		// TODO Auto-generated method stub
 		
 	}

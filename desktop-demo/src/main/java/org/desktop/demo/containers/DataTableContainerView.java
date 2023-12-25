@@ -49,9 +49,13 @@ public class DataTableContainerView extends AppPanel implements ApplicationModel
 	}
 
 	@Override
-	protected void registerEventListeners() { }
+	protected void registerEventListeners() { 
+		// nothing
+	}
 	
 	@Override
-	public void updateView() { }
+	public void updateView() { 
+		// nothing
+	}
 
 }
