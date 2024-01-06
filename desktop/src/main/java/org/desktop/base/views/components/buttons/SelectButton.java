@@ -1,10 +1,9 @@
 package org.desktop.base.views.components.buttons;
 
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.events.ApplicationEvent;
 import org.desktop.base.views.components.events.SelectFileEvent;
 
-public class SelectButton extends AppButton implements ApplicationModelListener {
+public class SelectButton extends AppButton {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 9124367834491909447L;

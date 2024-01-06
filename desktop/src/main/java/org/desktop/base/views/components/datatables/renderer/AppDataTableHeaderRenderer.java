@@ -30,7 +30,7 @@ public class AppDataTableHeaderRenderer implements TableCellRenderer {
 		Icon sortIcon = null;
 		
 		Component component = this.defaultRenderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		if (component instanceof JLabel) {
+		if (component instanceof JLabel label) {
 			sortColumn = ((AppDataTableSorterListener) table.getModel()).getSortColumn();
 			if (sortColumn != null) {
 				sortOrder = ((AppDataTableSorterListener) table.getModel()).getSortOrder();
@@ -45,7 +45,7 @@ public class AppDataTableHeaderRenderer implements TableCellRenderer {
 	            } else {
 	            	 sortIcon = UIManager.getIcon("Table.naturalSortIcon");
 	            }
-	            ((JLabel)component).setIcon(sortIcon);
+				label.setIcon(sortIcon);
 			}
 		}
 		return component;

@@ -12,9 +12,6 @@ public class SportmanMockService {
 	
 	public SportmanMockService() {
 		data = new ArrayList<>();
-//		for (int i = 0; i < 100; i++) {
-//			data.add(new Sportman((long)(i + 1), RandomStringUtils.randomAlphabetic(5), RandomStringUtils.randomAlphabetic(20), RandomStringUtils.randomAlphabetic(10), RandomUtils.nextInt(1900, 2019), RandomUtils.nextBoolean()));
-//		}
 
 		data.add(new Sportman(1L, "Kathy", "Smith", "Snowboarding", 5, false));
 		data.add(new Sportman(2L, "John", "Doe", "Rowing", 3, true));
@@ -68,7 +65,8 @@ public class SportmanMockService {
 		
 		// Filter by criteria
 		
-		int fistRegistry, lastRegistry;
+		int fistRegistry;
+		int lastRegistry;
 		fistRegistry = (criteria.getPageNumber() * criteria.getPageSize() + 1);                       
 		lastRegistry = (criteria.getPageNumber() * criteria.getPageSize() + criteria.getPageSize());    
 		if (lastRegistry > data.size()) {
@@ -76,8 +74,6 @@ public class SportmanMockService {
 		}
 		
 		return data.subList(fistRegistry -1, lastRegistry);
-		
-//		return data;
 	}
 	
 	public Integer countByCriteria(SportmanCriteria criteria) {

@@ -4,10 +4,9 @@ import java.util.Calendar;
 
 import javax.swing.JLabel;
 
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.panels.AppPanel;
 
-public class ApplicationStatus extends AppPanel implements ApplicationModelListener {
+public class ApplicationStatus extends AppPanel {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = -1661205291887146815L;

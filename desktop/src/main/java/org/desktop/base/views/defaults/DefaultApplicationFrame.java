@@ -5,7 +5,6 @@ import java.io.File;
 import org.desktop.base.views.ApplicationStatus;
 import org.desktop.base.views.ApplicationViewConfiguration;
 import org.desktop.base.views.annotations.ApplicationViewScan;
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.dialog.init.ApplicationInitializationDialog;
 import org.desktop.base.views.components.events.OpenFileEvent;
 import org.desktop.base.views.components.events.SaveFileEvent;
@@ -19,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @ApplicationViewScan(packages = {"org.desktop.demo.containers"})
 @Slf4j
-public class DefaultApplicationFrame extends AppFrame implements ApplicationModelListener {
+public class DefaultApplicationFrame extends AppFrame {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 4661793292792888017L;

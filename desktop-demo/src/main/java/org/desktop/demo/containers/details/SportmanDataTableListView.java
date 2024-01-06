@@ -3,7 +3,6 @@ package org.desktop.demo.containers.details;
 import java.awt.BorderLayout;
 
 import org.desktop.base.views.components.ApplicationModel;
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.events.ApplicationEvent;
 import org.desktop.base.views.components.events.OpenEntityEvent;
 import org.desktop.base.views.components.panels.AppPanel;
@@ -12,7 +11,7 @@ import org.desktop.demo.containers.details.data.Sportman;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SportmanDataTableListView  extends AppPanel implements ApplicationModelListener {
+public class SportmanDataTableListView  extends AppPanel {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 5574414910291766370L;

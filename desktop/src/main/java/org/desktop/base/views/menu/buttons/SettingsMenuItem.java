@@ -2,12 +2,11 @@ package org.desktop.base.views.menu.buttons;
 
 import java.awt.Cursor;
 
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.events.ApplicationEvent;
 import org.desktop.base.views.components.events.OpenSettingsDialogEvent;
 import org.desktop.base.views.components.menubar.buttons.AppMenuItem;
 
-public class SettingsMenuItem extends AppMenuItem implements ApplicationModelListener {
+public class SettingsMenuItem extends AppMenuItem {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 1266354841616399872L;

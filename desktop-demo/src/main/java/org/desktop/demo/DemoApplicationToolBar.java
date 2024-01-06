@@ -1,10 +1,9 @@
 package org.desktop.demo;
 
 import org.desktop.base.views.ApplicationViewConfiguration;
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.toolbar.AppMainToolBar;
 
-public class DemoApplicationToolBar extends AppMainToolBar implements ApplicationModelListener {
+public class DemoApplicationToolBar extends AppMainToolBar {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = -95062186306252920L;

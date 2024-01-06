@@ -10,7 +10,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 
 import org.desktop.base.views.components.ApplicationConstants;
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.datatables.listeners.AppDataTableHeaderMouseListener;
 import org.desktop.base.views.components.datatables.pagging.PaginationPanel;
 import org.desktop.base.views.components.datatables.renderer.AppDataTableHeaderRenderer;
@@ -20,7 +19,7 @@ import org.desktop.base.views.components.panels.AppPanel;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public abstract class AppDataTable<E, C> extends AppPanel implements ApplicationModelListener, ApplicationConstants {
+public abstract class AppDataTable<E, C> extends AppPanel implements ApplicationConstants {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 6061707010961045115L;

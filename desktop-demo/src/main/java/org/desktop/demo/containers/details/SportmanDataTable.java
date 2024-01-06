@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.datatables.AppDataTable;
 import org.desktop.demo.containers.details.data.Sportman;
 import org.desktop.demo.containers.details.data.SportmanCriteria;
@@ -18,7 +17,7 @@ import org.desktop.demo.containers.details.data.SportmanMockService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SportmanDataTable extends AppDataTable<Sportman, SportmanCriteria> implements ApplicationModelListener {
+public class SportmanDataTable extends AppDataTable<Sportman, SportmanCriteria> {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 5190038862045411081L;

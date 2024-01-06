@@ -5,7 +5,6 @@ import java.io.File;
 import org.desktop.base.views.ApplicationStatus;
 import org.desktop.base.views.ApplicationViewConfiguration;
 import org.desktop.base.views.annotations.ApplicationViewScan;
-import org.desktop.base.views.components.ApplicationModelListener;
 import org.desktop.base.views.components.dialog.init.ApplicationInitializationDialog;
 import org.desktop.base.views.components.events.OpenFileEvent;
 import org.desktop.base.views.components.events.OpenSettingsDialogEvent;
@@ -24,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 		textResources = {"demoMessages"}
 	)
 @Slf4j
-public class DemoApplicationFrame extends AppFrame implements ApplicationModelListener {
+public class DemoApplicationFrame extends AppFrame {
 
 	/** Value that it is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. */
 	private static final long serialVersionUID = 4661793292792888017L;
@@ -36,7 +35,9 @@ public class DemoApplicationFrame extends AppFrame implements ApplicationModelLi
 		this.arguments = args;
 	}
 
-	protected void handlerInitializateGUI() { }
+	protected void handlerInitializateGUI() { 
+		//DO NOTHING
+	}
 	
 	protected AppMenuBar buildMenuBar() {
 		return new ApplicationMenuBar();
@@ -73,9 +74,9 @@ public class DemoApplicationFrame extends AppFrame implements ApplicationModelLi
 
 	@Override
 	protected void handlerRegisterEventListeners() {
-		super.register(OpenFileEvent.class, (e) -> openFileDialog());
-		super.register(SaveFileEvent.class, (e) -> saveFileDialog());
-		super.register(OpenSettingsDialogEvent.class, (e) -> openSettingsDialog());
+		super.register(OpenFileEvent.class, e -> openFileDialog());
+		super.register(SaveFileEvent.class, e -> saveFileDialog());
+		super.register(OpenSettingsDialogEvent.class, e -> openSettingsDialog());
 	}
 	
 	
